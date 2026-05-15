@@ -5,18 +5,18 @@ from fastapi import FastAPI
 app = FastAPI()
 
 POD_NAME = os.getenv("POD_NAME","local-dev")
-VERSION_ID = os.getenv("VERSION_ID","v1")
+VERSION = os.getenv("VERSION","v1")
 
 @app.get("/")
 async def root():
     response = {
         "message": "Smart Traffic Router",
-        "version": VERSION_ID,
+        "version": VERSION,
         "pod_name": POD_NAME,
         "performance": "standard"
     }
     
-    if VERSION_ID == "v3":
+    if VERSION == "v3":
         response["performance"] = "optimized-low-latency"
         
     return response
@@ -25,7 +25,7 @@ async def root():
 async def health():
     return {
         "status": "200 OK",
-        "version": VERSION_ID,
+        "version": VERSION,
     }
 
 @app.get("/simulate/crash")
@@ -33,7 +33,7 @@ async def crash():
     os._exit(1)
     return {
         "pod_name": POD_NAME,
-        "version": VERSION_ID
+        "version": VERSION
     }
 
 @app.get("/simulate/load")
