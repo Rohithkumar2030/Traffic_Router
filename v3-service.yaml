@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: router-v3-svc
+spec:
+  selector:
+    app: router
+    version: v3
+  ports:
+    - port: 80
+      targetPort: 8003

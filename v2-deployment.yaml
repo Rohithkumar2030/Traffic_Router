@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: router-v2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: router
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: router
+        version: v2
+
+    spec:
+      containers:
+      - name: backend
+        image: router:v2
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
+        
