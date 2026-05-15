@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/session-cookie-name: "route"
 spec:
   rules:
-  - host: aegis.local
+  - host: router.local
   http:
     paths:
     - path: /
