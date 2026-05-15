@@ -1,7 +1,8 @@
-apiversion: apps/v1
-kind: deployment
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: router-v1
+spec:
   replicas: 3
   selector:
     matchLabels:
@@ -20,3 +21,4 @@ metadata:
         imagePullPolicy: Never
         ports:
         - containerPort: 8000
+        
