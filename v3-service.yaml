@@ -7,5 +7,6 @@ spec:
     app: router
     version: v3
   ports:
-    - port: 80
+    - protocol: TCP
+      port: 80
       targetPort: 8003
