@@ -21,8 +21,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: router:v3
-        imagePullPolicy: Never
+        image: nginx:latest
         ports:
         - containerPort: 8000
         
