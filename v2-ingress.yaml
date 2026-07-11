@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: aegis-ingress-v2
+  name: router-ingress-v2
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/canary: "true"
@@ -9,12 +9,13 @@ metadata:
     nginx.ingress.kubernetes.io/affinity: "cookie" # Sticky Sessions
 spec:
   rules:
-  - http:
+  - host: router.local
+    http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: aegis-v2-svc
+            name: router-v2-svc
             port:
               number: 80
